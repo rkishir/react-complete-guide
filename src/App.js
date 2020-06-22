@@ -24,15 +24,41 @@ switchNameHandler = (newName)=>{
   })
 }
 
+nameChangeNameHandler = (event)=>{
+  // console.log(event);
+  this.setState({
+    persons:[
+      {name: "Rakesh",age:"40"},
+      {name:  event.target.value, age:"3"},
+      {name: "lovenet",age:"39"}
+    ]
+  })
+}
+
   render() {
+
+    const buttonStyle = {
+      backgroundColor: 'White',
+      font: 'inhert',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+
+    }
     return (
       <div className="App">
        
        <h1> Welcome to React</h1>
        <p>working</p>
-       <button onClick={this.switchNameHandler.bind(this,"Rakesh Kapoor")}>Switch</button>
+       <button style={buttonStyle} onClick={this.switchNameHandler.bind(this,"Rakesh Kapoor")}>Switch</button>
        <p>Method 1</p>
-       <Person name={this.state.persons[1].name} age={this.state.persons[1].age}  click={this.switchNameHandler.bind(this,"Guragam Kapoor")} > this is my hobbi</Person>
+       <Person 
+       name={this.state.persons[1].name} 
+       age={this.state.persons[1].age}  
+       click={this.switchNameHandler.bind(this,"Guragam Kapoor")}
+       changed={this.nameChangeNameHandler}
+       
+       > this is my hobbi</Person>
 
        <p>Method 2</p>
        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} click={() => this.switchNameHandler("oh hoooo")}  /> 
